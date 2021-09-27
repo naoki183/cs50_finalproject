@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+
+        <title>競馬予想: {% block title %}{% endblock %}</title>
+     
+        <script>
+            function function1()
+            {
+                 var horse1 = parseInt(document.getElementById("horse1").value);
+                 var horse2 = parseInt(document.getElementById("horse2").value);
+                 list = {{result}};
+                 if(horse1 >= 1 && horse2 >= 1)
+                 {
+                     if(list[horse1][horse2] == 0)
+                     {
+                         winorlose.innerHTML=String(horse1) + "が勝ちます";
+                         
+                     }
+                     else if(list[horse1][horse2] == 1)
+                     {
+                         winorlose.innerHTML=String(horse2) + "が勝ちます";
+                     }
+                     else if(list[horse1][horse2] == -1)
+                     {
+                         winorlose.innerHTML="異なる馬を選んでください";
+                     }
+                 }
+                 return 0;
+
+                
+            }
+        </script>
+
+    </head>
+
+    <body>
+        <a href="http://127.0.0.1:5000/"><font size="6" color="blue">競馬予想.com</font></a><br>
+        <span></span><br>
+        データが不足している馬:<br>
+
+        {% for i in errorlist %}
+            {{i}}<br>
+        {% endfor %}
+        <span> </span><br>
+        レース結果:<br>
+        {% for i in winnum %}
+            {{i}} / {{horsenum1}}頭中<br>
+        {% endfor %}
+        <span> </span><br>
+        <label for="horsesselect">2頭の馬を比較する：</label><br>
+        <select id="horse1">
+            <option value="0">一方の馬を選んでください</option>
+        {% for i in horselist %}
+            <option value='{{i.num}}'>{{i.name}}</option>
+        {% endfor %}
+        </select><br>
+
+        <select id="horse2">
+            <option value="0">もう一方の馬を選んでください</option>
+        {% for i in horselist %}
+            <option value='{{i.num}}'>{{i.name}}</option>
+        {% endfor %}
+        </select><br>
+        <input type="button" value="比較" id="b" onclick="function1()";><br>
+        <div id="winorlose"></div><br>
+    </body>
+
+
+
+
+
+
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+
+        <title>競馬予想: {% block title %}{% endblock %}</title>
+        <script>
+            if('{{sentence}}'.length != 1)
+            {
+                alert('{{sentence}}');
+            }
+        </script>
+
+    </head>
+
+    <body>
+        <a href="http://127.0.0.1:5000/"><font size="6" color="blue">競馬予想.com</font></a><br>
+        &nbsp;<br>
+        <span> </span><a href="https://www.netkeiba.com/"><font color="blue">netkeiba.com</font></a>の出馬表のURLからレース結果を予測します．<br>
+        　&nbsp;<br>
+        　注意:<br>
+        　1. 必ず<font color="red">出馬表</font>のURL(「https://race.netkeiba.com/race/shutuba.html?race_id=」を含むもの)を入力してください．<br>
+        　2. <font color="red">レース直前の出馬表</font>を入力してください(天候，コンディションなどを取得するため)．<br>
+          &nbsp;&nbsp;&nbsp;3. 計算には時間がかかります．ご了承ください．<br>
+
+        <form action="/" method="post">
+            &nbsp;<input name="url" type="text" placeholder="URLを入力してください" autocomplete="off">
+            <button type="submit">予想</button>
+        </form>
+        
+    
+
+  
+    </body>
+
+
+
+
+
+
+
+</html>
